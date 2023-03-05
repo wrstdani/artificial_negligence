@@ -204,3 +204,4 @@ ggplot(paises.8Cat, aes(Alfabet, Esp.vida.Fem)) + ggtitle("Recta de Regresión d
 plot(paises.8$Alfabet, paises.8$Esp.vida.Fem, cex.main = "0.8", main = "Comparativa entre todos los países (rosa) y los Católicos (dorada):", xlab = "Alfabetización", ylab =  "Esperanza de Vida Femenina", col = "red")
 abline(lm(paises.8$Esp.vida.Fem ~ paises.8$Alfabet), col = "pink")
 abline(lm(paises.8Cat$Esp.vida.Fem ~ paises.8Cat$Alfabet), col = "gold")
+points(paisesCat$Alfabet, paisesCat$Esp.vida.Fem, col = "gold")
