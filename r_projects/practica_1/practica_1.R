@@ -27,7 +27,9 @@ ggplot(paises.8, aes(Urbana)) +
 ggplot(paises.8, aes(Religion)) + 
   geom_bar(bins = 9, color = "purple", fill = "#E0AAFF") + 
   theme_bw() +
-  labs(x = "Religión", y = "Frecuencia", title = "Religión mayoritaria en cada país")
+  labs(x = "Religión", y = "Ocurrencias", title = "Religión mayoritaria en cada país")
+
+table(paises.8$Religion)
 
 ## Esperanza de vida femenina
 ggplot(paises.8, aes(Esp.vida.Fem)) + 
@@ -35,11 +37,15 @@ ggplot(paises.8, aes(Esp.vida.Fem)) +
   theme_bw() +
   labs(x = "Esperanza de vida (años)", y = "Frecuencia", title = "Esperanza de vida femenina por país")
 
+paises.8$Pais[paises.8$Esp.vida.Fem < 55]
+mean(paises.8$Esp.vida.Fem)
+
 ## Esperanza de vida masculina
 ggplot(paises.8, aes(Esp.vida.Masc)) + 
   geom_histogram(bins = 9, color = "#EFA330", fill = "#EEF3A0") + 
   theme_bw() + 
   labs(x = "Esperanza de vida (años)", y = "Frecuencia", title = "Esperanza de vida masculina por país")
+mean(paises.8$Esp.vida.Masc)
 
 ## % de alfabetización
 ggplot(paises.8, aes(Alfabet)) +
@@ -47,11 +53,16 @@ ggplot(paises.8, aes(Alfabet)) +
   theme_bw() + 
   labs(x = "% de alfbetización", y = "Frecuencia", title = "Porcentaje de alfabetización por país")
 
+paises.8$Pais[paises.8$Alfabet==100]
+paises.8$Pais[paises.8$Alfabet<30]
+
 ## Mortalidad infantil
 ggplot(paises.8, aes(Mort.inf)) + 
   geom_histogram(bins = 9, color = "#1382FF", fill = "#96C8FF") + 
   theme_bw() + 
   labs(x = "Muertes por cada 1000 nacidos", y = "Frecuencia", title = "Mortalidad infantil por país")
+
+paises.8$Pais[paises.8$Mort.inf > 90 & paises.8$Mort.inf < 200]
 
 ## PIB per cápita
 ggplot(paises.8, aes(PIB.CAP)) +
@@ -59,17 +70,24 @@ ggplot(paises.8, aes(PIB.CAP)) +
   theme_bw() + 
   labs(x = "PIB per cápita", y = "Frecuencia", title = "Producto interior bruto per cápita")
 
+paises.8$Pais[paises.8$PIB.CAP == 0]
+
 ## Calorías
 ggplot(paises.8, aes(Calorias)) + 
   geom_histogram(bins = 9, color = "#FF2DC2", fill = "#FFAEE8") + 
   theme_bw() + 
   labs(x = "Calorías", y = "Frecuencia", title = "Calorías promedio diarias")
 
+paises.8$Pais[paises.8$Calorias > 3000 & paises.8$Calorias < 3700]
+paises.8$Pais[paises.8$Calorias < 1700]
+
 ## Hijos por mujer
 ggplot(paises.8, aes(Hijpromedio)) + 
   geom_histogram(bins = 9, color = "#8716FF", fill = "#DFC0FF") + 
   theme_bw() +
   labs(x = "Hijos por mujer", y = "Frecuencia", title = "Número de hijos promedio por mujer")
+
+paises.8$Pais[paises.8$Hijpromedio >= 6]
 
 ## % de alfabetización masculina
 ggplot(paises.8, aes(Alfabmasc)) + 
