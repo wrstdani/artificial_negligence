@@ -120,13 +120,16 @@ hist(paises.8$Esp.vida.Fem, xlab = 'Años', ylab = 'Frecuencia', main = 'Hist. M
 ## Religión
 table(paises.8$Religion)
 
-plot(paises.8$Religion, main = 'Frec. Religiones', col = 7, xlab = c("Hind", "Jud", "Animista", "Budista", "Catolica", "Musul", "Ortodoxa", "Protes"))
+ggplot(paises.8, aes(Religion)) + 
+  geom_bar(fill = "yellow", bins = 8) + 
+  theme_bw() + 
+  labs(x = "Religiones", y = NULL, title = "Frec. Religiones")
 
-plot(paises.8$Religion, paises.8$Esp.vida.Fem, col = 7)
+plot(paises.8$Religion, paises.8$Esp.vida.Fem, col = 7) 
 
 plot(paises.8$Religion, paises.8$Pais, col = 7)
-
-plot(paises.8$Esp.vida.Fem, paises.8$Religion, col = paises.8$Pais, main = "Esp.Vida.Fem. - Relig. - Países(color)")
+  
+plot(paises.8$Esp.vida.Fem, paises.8$Religion, col = paises.8$Pais, main = "Esp.Vida.Fem. - Relig. - Países(color)", xlab = "Esperanza de vida femenina", ylab = "Religión")
 
 
 ## Num. hijos
